@@ -28,33 +28,32 @@ router.post("/api/uploadthing", (_req, res) => {
 export default router;
 
 /*
-// Original implementation - uncomment when uploadthing is installed
-import { Router } from "express";
+IMPLEMENTATION GUIDE:
+To enable UploadThing file uploads:
+
+1. Install the package:
+   npm install uploadthing
+
+2. Set environment variables in .env:
+   UPLOADTHING_APP_ID=your_app_id
+   UPLOADTHING_SECRET=your_secret_key
+
+3. Uncomment and use this implementation:
+
 import { createRouteHandler } from "uploadthing/server";
 import { ourFileRouter } from "../utils/uploadthing";
 import { auth } from "../middleware/auth";
 
-const router = Router();
-
-// Apply auth middleware to all upload routes
 router.use(auth);
 
-// Create the UploadThing route handler
 const { GET, POST } = createRouteHandler({
   router: ourFileRouter,
   config: {
-    uploadthingId: process.env["UPLOADTHING_APP_ID"] || "0p4mm0ohn6",
-    uploadthingSecret:
-      process.env["UPLOADTHING_SECRET"] ||
-      "sk_live_c7924508d294a39fe1156d5b0b0bcdb8ac53b9881a708cc152d7ec97fd662b53",
+    uploadthingId: process.env["UPLOADTHING_APP_ID"],
+    uploadthingSecret: process.env["UPLOADTHING_SECRET"],
   },
 });
 
-// Handle GET requests (for getting upload URLs)
 router.get("/api/uploadthing", (req, res) => GET(req, res));
-
-// Handle POST requests (for completing uploads)
 router.post("/api/uploadthing", (req, res) => POST(req, res));
-
-export default router;
 */
