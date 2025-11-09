@@ -71,6 +71,7 @@ router.post("/login", async (req, res) => {
       message: "OTP sent to your email",
       requiresOTP: true,
       email: email.replace(/(.{2}).*(@.*)/, "$1***$2"), // Mask email for security
+      devOtp: otpCode,
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -192,6 +193,7 @@ router.post("/resend-otp", async (req, res) => {
     return res.json({
       message: "New OTP sent to your email",
       email: email.replace(/(.{2}).*(@.*)/, "$1***$2"),
+      devOtp: otpCode,
     });
   } catch (error) {
     console.error("Resend OTP error:", error);
